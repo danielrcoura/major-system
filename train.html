@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Treino</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#6c63ff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Memory Deck">
+  <link rel="apple-touch-icon" href="icons/favicon-96x96.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="train.css">
+</head>
+<body>
+  <header>
+    <h1>🧠 Treino</h1>
+    <p class="subtitle">Associe os números aos personagens corretos</p>
+    <nav class="nav-links">
+      <a href="index.html">📇 Deck</a>
+      <a href="train.html" class="active">🏋️ Treino</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Start screen -->
+    <div id="startScreen" class="train-panel">
+      <div class="mode-selector">
+        <button class="mode-btn active" data-mode="numToChar">🔢 Número → 🧑 Personagem</button>
+        <button class="mode-btn" data-mode="charToNum">🧑 Personagem → 🔢 Número</button>
+        <button class="mode-btn" data-mode="flashCards">🃏 Flash Cards</button>
+      </div>
+      <p id="modeDescription" class="train-info">Veja 3 números e clique nos personagens na ordem correta.</p>
+      <p class="train-info">São 10 desafios. Apenas cartões preenchidos serão usados.</p>
+      <p id="filledCount" class="train-info"></p>
+      <button id="startBtn" class="btn-start">Começar Treino</button>
+    </div>
+
+    <!-- Challenge screen (mode 1: numbers → characters) -->
+    <div id="challengeScreen" class="train-panel hidden">
+      <div class="challenge-header">
+        <span id="roundLabel" class="round-label"></span>
+        <span id="scoreLabel" class="score-label"></span>
+      </div>
+      <div class="numbers-row" id="numbersRow"></div>
+      <p class="instruction">Clique nos personagens na ordem dos números acima:</p>
+      <div class="choices-row" id="choicesRow"></div>
+      <div id="feedback" class="feedback hidden"></div>
+    </div>
+
+    <!-- Challenge screen (mode 2: characters → numbers) -->
+    <div id="challengeScreen2" class="train-panel hidden">
+      <div class="challenge-header">
+        <span id="roundLabel2" class="round-label"></span>
+        <span id="scoreLabel2" class="score-label"></span>
+      </div>
+      <div class="choices-row" id="charsRow"></div>
+      <p class="instruction">Clique nos números na ordem dos personagens acima:</p>
+      <div class="numbers-row" id="numChoicesRow"></div>
+      <div id="feedback2" class="feedback hidden"></div>
+    </div>
+
+    <!-- Flash Cards screen -->
+    <div id="flashScreen" class="train-panel hidden">
+      <div class="challenge-header">
+        <span id="flashRoundLabel" class="round-label"></span>
+        <span id="flashProgress" class="score-label"></span>
+      </div>
+      <div class="flash-card-wrapper">
+        <div class="flash-card" id="flashCard">
+          <div class="flash-front">
+            <span class="flash-number" id="flashNumber"></span>
+          </div>
+          <div class="flash-back">
+            <div class="flash-art" id="flashArt"></div>
+            <div class="flash-name" id="flashName"></div>
+          </div>
+        </div>
+      </div>
+      <p class="instruction" id="flashInstruction">Clique na carta para revelar</p>
+    </div>
+
+    <!-- Result screen -->
+    <div id="resultScreen" class="train-panel hidden">
+      <div class="result-box">
+        <h2 id="resultTitle"></h2>
+        <p id="resultScore"></p>
+      </div>
+      <button id="retryBtn" class="btn-start">Treinar Novamente</button>
+    </div>
+  </main>
+
+  <script src="train.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>

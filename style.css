@@ -1,0 +1,373 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #e8e5e0;
+  color: #333;
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+  background: #fff;
+  border-bottom: 2px solid #d0ccc5;
+}
+
+h1 { font-size: 2rem; color: #8b0000; }
+.subtitle { color: #888; margin: 0.5rem 0 1rem; }
+
+.global-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+.global-progress .progress-bar {
+  width: 200px;
+  height: 8px;
+  background: #e0dcd5;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.global-progress .progress-fill {
+  height: 100%;
+  background: #8b0000;
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+
+.legend {
+  background: #faf8f5;
+  border: 1px solid #d0ccc5;
+  border-radius: 8px;
+  padding: 1rem;
+  max-width: 700px;
+  margin: 1rem auto;
+}
+.legend h3 { color: #8b0000; margin-bottom: 0.5rem; font-size: 0.9rem; }
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.4rem;
+  font-size: 0.85rem;
+}
+.legend-grid span { background: #f0ece6; padding: 0.3rem 0.5rem; border-radius: 4px; }
+.legend-grid strong { color: #8b0000; }
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#search {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #333;
+  width: 300px;
+  font-size: 0.95rem;
+}
+.controls button {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #333;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.controls button:hover { background: #f0ece6; }
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #8b0000;
+  padding: 0.4rem 1rem;
+  border: 1px solid #d0ccc5;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: background 0.15s;
+}
+.nav-links a:hover, .nav-links a.active {
+  background: #f0ece6;
+}
+
+/* Layout */
+main {
+  padding: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.section {
+  background: #fff;
+  border: 1px solid #d0ccc5;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 1.2rem;
+  background: #faf8f5;
+  border-bottom: 1px solid #e8e5e0;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #8b0000;
+}
+
+.section-progress {
+  font-size: 0.85rem;
+  color: #2d6a4f;
+  background: rgba(45, 106, 79, 0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+}
+
+.section-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.7rem;
+  padding: 0.8rem;
+}
+
+/* ===== CARD = Playing Card Style ===== */
+.card {
+  aspect-ratio: 2.5 / 3.5;
+  background: #fffef9;
+  border: 2px solid #c9c4bb;
+  border-radius: 12px;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 2px 3px 8px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+  transform: translateY(-6px) rotate(-1deg);
+  box-shadow: 4px 8px 20px rgba(0,0,0,0.18);
+  border-color: #8b0000;
+}
+
+.card.filled {
+  border-color: #8b6914;
+  background: linear-gradient(180deg, #fffef9 0%, #fdf6e3 100%);
+}
+.card.filled:hover { border-color: #8b0000; }
+
+/* Corner numbers */
+.card-corner {
+  font-family: 'Georgia', serif;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #8b0000;
+  line-height: 1;
+  padding: 4px 6px;
+  position: absolute;
+  z-index: 2;
+}
+.card-corner-top { top: 0; left: 0; }
+
+
+/* Card art area */
+.card-art {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 22px 6px 3px;
+  border: 1px solid #e0dcd5;
+  border-radius: 4px;
+  background: #f5f2ec;
+  overflow: hidden;
+  min-height: 0;
+}
+.card-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-art-empty {
+  font-size: 1.8rem;
+  opacity: 0.25;
+}
+
+/* Card info strip */
+.card-info {
+  padding: 3px 6px 4px;
+  text-align: center;
+  background: #fffef9;
+  border-top: 1px solid #e8e5e0;
+  min-height: 30px;
+}
+.card-name {
+  font-family: 'Georgia', serif;
+  font-size: 0.68rem;
+  font-weight: bold;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card-consonants {
+  font-size: 0.58rem;
+  color: #aaa;
+  margin-top: 1px;
+}
+
+/* ===== Image in modal ===== */
+.pao-image-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+.image-preview {
+  width: 130px;
+  height: 160px;
+  border-radius: 10px;
+  border: 2px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #faf8f5;
+}
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.image-placeholder {
+  font-size: 2rem;
+  color: #ccc;
+}
+.image-input-row {
+  display: flex;
+  gap: 0.4rem;
+  width: 100%;
+}
+.image-input-row input {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.85rem;
+  background: #fff;
+  color: #333;
+}
+.image-input-row input:focus { outline: none; border-color: #8b0000; }
+.btn-paste {
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.btn-paste:hover { background: #f0ece6; }
+
+/* ===== Modal ===== */
+.modal {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 100;
+  padding: 1rem;
+}
+.modal.hidden { display: none; }
+.modal-content {
+  background: #fff;
+  border: 1px solid #d0ccc5;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 550px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+.modal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+.modal-header h2 { color: #8b0000; font-family: 'Georgia', serif; }
+.close-btn { background: none; border: none; color: #999; font-size: 1.5rem; cursor: pointer; }
+.close-btn:hover { color: #8b0000; }
+.modal-body { padding: 1.5rem; }
+.consonants-info { color: #888; margin-bottom: 1rem; font-size: 0.9rem; }
+.pao-fields { display: flex; flex-direction: column; gap: 0.8rem; }
+.pao-fields label { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.9rem; color: #666; }
+.pao-fields input {
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #333;
+  font-size: 0.95rem;
+}
+.pao-fields input:focus { outline: none; border-color: #8b0000; }
+
+.suggestions-section { margin-top: 1.5rem; }
+.suggestions-section h3 { color: #8b0000; font-size: 0.95rem; margin-bottom: 0.8rem; }
+#suggestions { display: flex; flex-direction: column; gap: 0.4rem; }
+.suggestion {
+  background: #faf8f5;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.15s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.suggestion:hover { background: #f0ece6; }
+.suggestion .source { color: #999; font-size: 0.75rem; }
+
+.modal-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #eee;
+  text-align: right;
+}
+.btn-save {
+  background: #8b0000;
+  color: white;
+  border: none;
+  padding: 0.6rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: 'Georgia', serif;
+}
+.btn-save:hover { background: #6b0000; }
+
+@media (max-width: 600px) {
+  .legend-grid { grid-template-columns: repeat(2, 1fr); }
+  .section-cards { grid-template-columns: repeat(3, 1fr); padding: 0.8rem; gap: 0.8rem; }
+}

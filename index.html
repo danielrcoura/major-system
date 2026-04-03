@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Deck</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#6c63ff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Memory Deck">
+  <link rel="apple-touch-icon" href="icons/favicon-96x96.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🃏 Memory Deck</h1>
+    <p class="subtitle">Crie sua lista de imagens de 00 a 99 com personagens de ficção</p>
+
+    <nav class="nav-links">
+      <a href="index.html" class="active">📇 Deck</a>
+      <a href="train.html">🏋️ Treino</a>
+    </nav>
+  </header>
+  <main>
+    <div id="globalProgress" class="global-progress"></div>
+    <div class="controls">
+      <input type="text" id="search" placeholder="Buscar por número, nome ou consoantes..." aria-label="Buscar">
+      <button id="exportBtn" title="Exportar como JSON">📥 Exportar</button>
+      <button id="importBtn" title="Importar JSON">📤 Importar</button>
+      <input type="file" id="importFile" accept=".json" hidden>
+    </div>
+    <div id="grid"></div>
+  </main>
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle"></h2>
+        <button class="close-btn" id="closeModal" aria-label="Fechar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="modalConsonants" class="consonants-info"></p>
+        <div class="pao-image-section">
+          <div id="imagePreview" class="image-preview">
+            <span class="image-placeholder">📷</span>
+          </div>
+          <div class="image-input-row">
+            <input type="text" id="paoImage" placeholder="Cole a URL da imagem do personagem">
+            <button type="button" id="pasteImageBtn" class="btn-paste" title="Colar da área de transferência">📋</button>
+          </div>
+        </div>
+        <div class="pao-fields">
+          <label>
+            🧑 Pessoa (Personagem)
+            <input type="text" id="paoPersona" placeholder="Ex: Son Goku">
+          </label>
+          <label>
+            ⚡ Ação
+            <input type="text" id="paoAction" placeholder="Ex: lançar kamehameha">
+          </label>
+          <label>
+            🎯 Objeto
+            <input type="text" id="paoObject" placeholder="Ex: esfera do dragão">
+          </label>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button id="saveBtn" class="btn-save">Salvar</button>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>
