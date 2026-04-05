@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import * as fc from 'fast-check';
 import { render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router';
 import CardGrid from './CardGrid';
 import type { DeckEntry, DeckData } from '../types';
 
@@ -42,7 +43,9 @@ describe('Property 6: Contagem de cartões preenchidos é consistente', () => {
     fc.assert(
       fc.property(deckDataArb, (data: DeckData) => {
         const { container } = render(
-          <CardGrid data={data} filter="" onCardClick={(_num: string) => {}} />
+          <MemoryRouter>
+            <CardGrid data={data} filter="" onCardClick={(_num: string) => {}} />
+          </MemoryRouter>
         );
 
         const sections = container.querySelectorAll('.section');

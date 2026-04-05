@@ -1,13 +1,13 @@
 import { useRef } from 'react';
 import { useDeckData } from '../hooks/useDeckData';
-import { DeckData } from '../types';
+import { deckCore } from '../domain';
 
 export default function ImportExportControls(): React.JSX.Element {
-  const { data, importData } = useDeckData();
+  const { importData } = useDeckData();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   function handleExport(): void {
-    const blob = new Blob([JSON.stringify(data, null, 2)], {
+    const blob = new Blob([deckCore.exportCards()], {
       type: 'application/json',
     });
     const a: HTMLAnchorElement = document.createElement('a');
@@ -22,10 +22,11 @@ export default function ImportExportControls(): React.JSX.Element {
     const reader = new FileReader();
     reader.onload = (ev: ProgressEvent<FileReader>): void => {
       try {
-        const parsed: DeckData = JSON.parse(ev.target?.result as string);
-        importData(parsed);
-      } catch {
-        alert('Arquivo JSON inválido.');
+        const jsonString = ev.target?.result as string;
+        deckCore.importCards(jsonString);
+        importData(deckCore.getAll());
+      } catch (err) {
+        alert(err instanceof Error ? err.message : 'Arquivo JSON inválido.');
       }
     };
     reader.readAsText(file);

@@ -1,7 +1,6 @@
 import React, { createContext, useReducer } from 'react';
 import { DeckData, DeckEntry } from '../types';
-
-const STORAGE_KEY = 'pao-major-system';
+import { deckCore } from '../domain';
 
 export interface DeckState {
   data: DeckData;
@@ -17,27 +16,14 @@ export interface DeckDataContextValue {
   dispatch: React.Dispatch<DeckAction>;
 }
 
-function loadFromStorage(): DeckData {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-  } catch {
-    return {};
-  }
-}
-
-function persistToStorage(data: DeckData): void {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
-
 export function deckDataReducer(state: DeckState, action: DeckAction): DeckState {
   switch (action.type) {
     case 'SAVE_CARD': {
+      deckCore.saveCard(action.num, action.entry);
       const newData = { ...state.data, [action.num]: action.entry };
-      persistToStorage(newData);
       return { ...state, data: newData };
     }
     case 'IMPORT_DATA': {
-      persistToStorage(action.data);
       return { ...state, data: action.data };
     }
     case 'LOAD_DATA': {
@@ -52,7 +38,7 @@ export const DeckDataContext = createContext<DeckDataContextValue | undefined>(u
 
 export function DeckDataProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(deckDataReducer, {
-    data: loadFromStorage(),
+    data: deckCore.getAll(),
   });
 
   return (

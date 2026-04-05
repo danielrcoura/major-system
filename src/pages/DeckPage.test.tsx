@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
+import { MemoryRouter } from 'react-router';
 import { DeckDataContext } from '../context/DeckDataContext';
 import DeckPage from './DeckPage';
 
@@ -9,7 +10,9 @@ function renderWithContext(data = {}) {
     dispatch,
     ...render(
       <DeckDataContext.Provider value={{ state: { data }, dispatch }}>
-        <DeckPage />
+        <MemoryRouter>
+          <DeckPage />
+        </MemoryRouter>
       </DeckDataContext.Provider>
     ),
   };

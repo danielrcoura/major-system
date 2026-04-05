@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import * as fc from 'fast-check';
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router';
 import CardGrid from './CardGrid';
 import type { DeckEntry, DeckData } from '../types';
 
@@ -39,7 +40,9 @@ describe('Property 5: Grid renderiza 10 seções com 10 cartões cada', () => {
       fc.property(deckDataArb, (data: DeckData) => {
         const onClick = (_num: string): void => {};
         const { container } = render(
-          <CardGrid data={data} onCardClick={onClick} />
+          <MemoryRouter>
+            <CardGrid data={data} onCardClick={onClick} />
+          </MemoryRouter>
         );
 
         // Should have exactly 10 sections
