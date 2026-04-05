@@ -1,0 +1,350 @@
+{
+  "10": {
+    "persona": "Tony Stark",
+    "action": "",
+    "object": "",
+    "image": "https://i.abcnewsfe.com/a/fd751005-a167-478b-bba2-ccaf61e26bf6/iron-man-rdjr-1-ht-thg-231204_1701712078177_hpMain_16x9.jpg?w=992"
+  },
+  "11": {
+    "persona": "Tenten",
+    "action": "",
+    "object": "",
+    "image": "https://static.wikia.nocookie.net/wikinaruto/images/e/e5/Tenten.jpg/revision/latest?cb=20100520205518&path-prefix=pt"
+  },
+  "12": {
+    "persona": "Tonya",
+    "action": "",
+    "object": "",
+    "image": "https://static.wikia.nocookie.net/todomundoodeiaochris/images/7/70/Imani_Hakim.jpg/revision/latest?cb=20100926172848&path-prefix=pt"
+  },
+  "13": {
+    "persona": "Tommy",
+    "action": "",
+    "object": "",
+    "image": "https://static.wikia.nocookie.net/peaky-blinders/images/f/f5/Peaky_Tommy_Shelby.jpg/revision/latest/scale-to-width-down/220?cb=20141013005757"
+  },
+  "14": {
+    "persona": "Thor",
+    "action": "",
+    "object": "",
+    "image": "https://img.odcdn.com.br/wp-content/uploads/2022/06/thor-hemsworth.jpg"
+  },
+  "19": {
+    "persona": "Tobi",
+    "action": "",
+    "object": "",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcsCNJwTiK1Cv3QxihjCU7MQqFw-NOeiOxaA&s"
+  },
+  "20": {
+    "persona": "Nezuko",
+    "action": "",
+    "object": "",
+    "image": "https://preview.redd.it/i-love-nezuko-i-dont-love-how-nezuko-is-handled-in-most-of-v0-9ukoufqfyyqf1.jpeg?auto=webp&s=c95a4890c051bca7b21b42ddf6414b3fa6328f00"
+  },
+  "21": {
+    "persona": "Netero",
+    "action": "",
+    "object": "",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMWn3DI7uQlsccX3YcHGDBdF1On14XGH0SzA&s"
+  },
+  "23": {
+    "persona": "Nami",
+    "action": "",
+    "object": "",
+    "image": "https://static.wikia.nocookie.net/fairypirates/images/d/dd/Nami.png/revision/latest?cb=20161022095010"
+  },
+  "24": {
+    "persona": "Naruto",
+    "action": "",
+    "object": "",
+    "image": "https://static.wikia.nocookie.net/naruto/images/3/33/Naruto_Uzumaki_%28Parte_I_-_HD%29.png/revision/latest/scale-to-width/360?cb=20160316113315&path-prefix=pt-br"
+  },
+  "26": {
+    "persona": "Neji",
+    "action": "",
+    "object": "",
+    "image": "https://static.wikia.nocookie.net/naruto/images/e/ee/Neji_%28Parte_I%29.png/revision/latest/scale-to-width-down/1200?cb=20200309134740&path-prefix=pt-br"
+  },
+  "27": {
+    "persona": "Nika",
+    "action": "",
+    "object": "",
+    "image": "data:image/jpeg;base64,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"
+  },
+  "29": {
+    "persona": "Nepo",
+    "action": "",
+    "object": "",
+    "image": "https://i.redd.it/fsi0a9i49z481.jpg"
+  },
+  "32": {
+    "persona": "Minato",
+    "action": "",
+    "object": "",
+    "image": "https://criticalhits.com.br/wp-content/uploads/2021/12/20190616-minato-kunai-01.jpg"
+  },
+  "33": {
+    "persona": "Mikey Mouse",
+    "action": "",
+    "object": "",
+    "image": "https://upload.wikimedia.org/wikipedia/pt/thumb/d/d4/Mickey_Mouse.png/250px-Mickey_Mouse.png"
+  },
+  "34": {
+    "persona": "Meruem",
+    "action": "",
+    "object": "",
+    "image": "https://miro.medium.com/1*4zPvBqTSdeXszAfLH4lwzQ.png"
+  },
+  "35": {
+    "persona": "Meliodas",
+    "action": "",
+    "object": "",
+    "image": "https://i.redd.it/vx82e0wsqaqc1.jpeg"
+  },
+  "37": {
+    "persona": "Mago Negro",
+    "action": "",
+    "object": "",
+    "image": "https://preview.redd.it/guys-why-the-original-dark-magician-card-is-not-in-the-game-v0-ud69t124kk6d1.jpeg?auto=webp&s=787a726d84593efe6e9e447a13dcdf3b33772ab2"
+  },
+  "40": {
+    "persona": "Hisoka",
+    "action": "",
+    "object": "",
+    "image": "https://i.pinimg.com/736x/b8/ef/33/b8ef33ad8b01122afa4356b86c3da90c.jpg"
+  },
+  "41": {
+    "persona": "Arthur",
+    "action": "",
+    "object": "",
+    "image": "https://preview.redd.it/arthur-shelby-is-the-most-misunderstood-character-in-peaky-v0-bkev9qchh9mg1.jpeg?width=640&crop=smart&auto=webp&s=12dce0a10a342018f6a90b06a0ebe8dc8689b4cb"
+  },
+  "42": {
+    "persona": "Hinata",
+    "action": "",
+    "object": "",
+    "image": "https://static.wikia.nocookie.net/naruto/images/a/a4/Hinata_Hy%C5%ABga_%28Infobox_-_Parte_II%29.PNG/revision/latest/scale-to-width/360?cb=20140408001739&path-prefix=pt-br"
+  },
+  "46": {
+    "persona": "Raj",
+    "action": "",
+    "object": "",
+    "image": "https://aventurasnahistoria.com.br/wp-content/uploads/curiosidades/raj_3_usq3pBA.jpg"
+  },
+  "47": {
+    "persona": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX1H2VLOnE_IBYYj3pEWOdUTGaUQU6C0suMw&s",
+    "action": "",
+    "object": "",
+    "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2012/04/26/18/Untitled-5.jpg"
+  },
+  "49": {
+    "persona": "Robbin",
+    "action": "",
+    "object": "",
+    "image": "https://i.pinimg.com/736x/af/6c/62/af6c62672629173b3ea91edcf160d58f.jpg"
+  },
+  "55": {
+    "persona": "Lula",
+    "action": "",
+    "object": "",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28ombros%29_denoise.jpg/960px-Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%28ombros%29_denoise.jpg"
+  },
+  "57": {
+    "persona": "Loki",
+    "action": "",
+    "object": "",
+    "image": "https://amazonasatual.com.br/wp-content/uploads/2021/04/Loki-Marvel.jpg"
+  },
+  "58": {
+    "persona": "Luffy",
+    "action": "",
+    "object": "",
+    "image": "https://ovicio.com.br/wp-content/uploads/2021/11/20211119-ovicio-one-piece-cosplay-luffy.jpg"
+  },
+  "62": {
+    "persona": "Shino",
+    "action": "",
+    "object": "",
+    "image": "https://static.wikia.nocookie.net/naruto/images/f/f1/Shino_Aburame.PNG/revision/latest/scale-to-width-down/1200?cb=20141018074459&path-prefix=pt-br"
+  },
+  "64": {
+    "persona": "Jiraya",
+    "action": "",
+    "object": "",
+    "image": "https://static.wikia.nocookie.net/wikinaruto/images/c/cf/Jiraiya.jpg/revision/latest?cb=20100519194042&path-prefix=pt"
+  },
+  "67": {
+    "persona": "Shikamaru",
+    "action": "",
+    "object": "",
+    "image": "https://i.pinimg.com/736x/f1/ba/9c/f1ba9c5ecde485d01c3133f75653b191.jpg"
+  },
+  "68": {
+    "persona": "Chaves",
+    "action": "",
+    "object": "",
+    "image": "https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2024/02/chaves_79da67.jpg?w=1200&h=675&crop=1"
+  },
+  "69": {
+    "persona": "Chopper",
+    "action": "",
+    "object": "",
+    "image": "https://d2d7ho1ae66ldi.cloudfront.net/ArquivoNoticias/2246835e-76f2-11ef-aa79-9bebc91072b3/CHOPPER.jpeg"
+  },
+  "70": {
+    "persona": "",
+    "action": "",
+    "object": "",
+    "image": ""
+  },
+  "71": {
+    "persona": "Kratos",
+    "action": "",
+    "object": "",
+    "image": "https://ovicio.com.br/wp-content/uploads/2022/05/20220502-ovicio-kratos-god_of_war-god_of_war_4-video_games-555x555.jpg"
+  },
+  "72": {
+    "persona": "Gon",
+    "action": "",
+    "object": "",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOBHFT7nggN11EYtTIMqsvrM6kDdKvX57IAw&s"
+  },
+  "73": {
+    "persona": "Kimimaro",
+    "action": "",
+    "object": "",
+    "image": "https://nikkeypedia.org.br/images/f/f3/Kimimaro.jpg"
+  },
+  "74": {
+    "persona": "Gaara",
+    "action": "",
+    "object": "",
+    "image": "https://static.wikia.nocookie.net/naruto/images/e/ef/Gaara_%28Parte_I%29.PNG/revision/latest/scale-to-width-down/1200?cb=20170917114859&path-prefix=pt-br"
+  },
+  "75": {
+    "persona": "Killua",
+    "action": "",
+    "object": "",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIZ-0b8YYn_Zj_TsrAsKzjgmC3ojRii8PGtA&s"
+  },
+  "76": {
+    "persona": "Kaiju",
+    "action": "",
+    "object": "",
+    "image": "https://s2-techtudo.glbimg.com/smD8eN56tHv1Qrjet3sFY4s0AZ4=/0x0:1920x1080/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2024/R/B/HzBB5MRr2TplfBCf7lYg/design-sem-nome-2024-05-09t180934.673.png"
+  },
+  "77": {
+    "persona": "Kakashi",
+    "action": "",
+    "object": "",
+    "image": "https://ovicio.com.br/wp-content/uploads/2021/08/20210825-adidas-ultraboost-copa-naruto-kakashi-555x555.jpg"
+  },
+  "78": {
+    "persona": "Gavião Arqueiro",
+    "action": "",
+    "object": "",
+    "image": "https://img.tribunahoje.com/jnpxklGY0Bj9ospc4tNQPtRSjvc=/840x520/smart/s3.tribunahoje.com/uploads/imagens/renner-o-gaviao-arqueiro-dos-vingadores-quebra-os-dois-bracos-em-filmagens.jpg"
+  },
+  "79": {
+    "persona": "Kiba",
+    "action": "",
+    "object": "",
+    "image": "https://static.wikia.nocookie.net/naruto/images/0/03/Kiba.png/revision/latest/scale-to-width-down/1200?cb=20180124105049"
+  },
+  "84": {
+    "persona": "",
+    "action": "",
+    "object": "",
+    "image": ""
+  },
+  "86": {
+    "persona": "Flash",
+    "action": "",
+    "object": "",
+    "image": "https://static.wikia.nocookie.net/anicrossbr/images/4/49/The_Flash_22RUgKP-0.png/revision/latest?cb=20160514220012&path-prefix=pt-br"
+  },
+  "87": {
+    "persona": "Franky",
+    "action": "",
+    "object": "",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCcS_PuaV5XuZd92um7jz-1psxhHBg5iV3ZA&s"
+  },
+  "88": {
+    "persona": "Vivi",
+    "action": "",
+    "object": "",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcjrErBoQFCUOGALrWC6zBNx2zB1CtouVcOg&s"
+  },
+  "91": {
+    "persona": "Pato Donald",
+    "action": "",
+    "object": "",
+    "image": "https://upload.wikimedia.org/wikipedia/pt/6/6f/Donald.png"
+  },
+  "92": {
+    "persona": "Pain",
+    "action": "",
+    "object": "",
+    "image": "https://miro.medium.com/0*omXNDFPKOGqy1Qaj.png"
+  },
+  "93": {
+    "persona": "Buma",
+    "action": "",
+    "object": "",
+    "image": "https://i.redd.it/ky1b4i7zkgmf1.jpeg"
+  },
+  "95": {
+    "persona": "Polly",
+    "action": "",
+    "object": "",
+    "image": "https://images.immediate.co.uk/production/volatile/sites/3/2022/01/2_Helen-McCrory-850d638.jpeg?quality=90&resize=556,505"
+  },
+  "97": {
+    "persona": "Pikachu",
+    "action": "",
+    "object": "",
+    "image": "https://pokecartas.net/cdn/shop/articles/Screenshot_28.png?v=1692802439"
+  },
+  "99": {
+    "persona": "Peppa",
+    "action": "",
+    "object": "",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnEAZODztQFrwN2Qq_8oG8Pd3amF_ibtC8bQ&s"
+  },
+  "04": {
+    "persona": "Zoro",
+    "action": "test",
+    "object": "test",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQivxS_Jr_sR8vv1SyAfqZsMNmFQKqN2L2q6Q&s"
+  },
+  "01": {
+    "persona": "",
+    "action": "",
+    "object": "",
+    "image": ""
+  },
+  "06": {
+    "persona": "Sanji",
+    "action": "",
+    "object": "",
+    "image": "https://criticalhits.com.br/wp-content/uploads/2019/04/Sanji-One-Piece-recompensa.webp"
+  },
+  "07": {
+    "persona": "Sakura",
+    "action": "",
+    "object": "",
+    "image": "https://s.aficionados.com.br/imagens/saiba-tudo-sobre-sakura-haruno_t.jpg"
+  },
+  "00": {
+    "persona": "Sasori",
+    "action": "",
+    "object": "",
+    "image": "https://preview.redd.it/everything-you-need-to-know-about-sasori-of-the-red-sand-v0-szkhfmq8zcx11.jpg?width=283&format=pjpg&auto=webp&s=f4c1baefdc650107ad97bac579195f4aec1b1cfe"
+  },
+  "09": {
+    "persona": "Zabuza",
+    "action": "",
+    "object": "",
+    "image": "https://preview.redd.it/beginning-of-shippuden-naruto-vs-zabuza-v0-h1z1o6m0y1fe1.png?width=640&crop=smart&auto=webp&s=ac5ef42dd7fa23dce7413cad38c4e1e0cfb5608c"
+  }
+}
