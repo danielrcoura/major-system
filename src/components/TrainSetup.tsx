@@ -1,9 +1,6 @@
 import { TrainMode } from '../types';
-import { isStartEnabled } from '../utils/trainUtils';
 
 const MODE_DESCRIPTIONS: Record<TrainMode, string> = {
-  numToChar: 'Veja 3 números e clique nos personagens na ordem correta.',
-  charToNum: 'Veja 3 personagens e clique nos números na ordem correta.',
   flashCards:
     'Veja o número, clique para revelar o personagem. Revise todos os cartões preenchidos.',
   rangeTrain:
@@ -16,8 +13,6 @@ interface ModeOption {
 }
 
 const MODES: ModeOption[] = [
-  { key: 'numToChar', label: 'Número → Personagem' },
-  { key: 'charToNum', label: 'Personagem → Número' },
   { key: 'flashCards', label: 'Flash Cards' },
   { key: 'rangeTrain', label: 'Treino por Range' },
 ];
@@ -30,7 +25,7 @@ interface TrainSetupProps {
 }
 
 export default function TrainSetup({ filledCount, mode, onModeChange, onStart }: TrainSetupProps) {
-  const enabled = isStartEnabled(mode, filledCount);
+  const enabled = filledCount >= 1;
 
   return (
     <div className="train-panel">

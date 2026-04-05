@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import * as fc from 'fast-check';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import TrainSetup from './TrainSetup';
 import type { TrainMode } from '../types';
 
@@ -9,8 +9,8 @@ import type { TrainMode } from '../types';
  * Validates: Requirements 7.3, 7.4, 7.5
  */
 describe('Property 9: Botão de início do treino respeita mínimo de cartões', () => {
-  it('start button is disabled when filledCount < 5 for challenge modes, and < 1 for flashCards', () => {
-    const modeArb: fc.Arbitrary<TrainMode> = fc.constantFrom('numToChar' as TrainMode, 'charToNum' as TrainMode, 'flashCards' as TrainMode);
+  it('start button is disabled when filledCount < 1, enabled otherwise', () => {
+    const modeArb: fc.Arbitrary<TrainMode> = fc.constantFrom('flashCards' as TrainMode, 'rangeTrain' as TrainMode);
     const filledCountArb: fc.Arbitrary<number> = fc.integer({ min: 0, max: 100 });
 
     fc.assert(
@@ -24,21 +24,12 @@ describe('Property 9: Botão de início do treino respeita mínimo de cartões',
           />
         );
 
-        const btn = container.querySelector('.btn-start');
+        const btn = container.querySelector('.btn-start') as HTMLButtonElement;
 
-        if (mode === 'flashCards') {
-          if (filledCount >= 1) {
-            expect(btn.disabled).toBe(false);
-          } else {
-            expect(btn.disabled).toBe(true);
-          }
+        if (filledCount >= 1) {
+          expect(btn.disabled).toBe(false);
         } else {
-          // numToChar or charToNum require >= 5
-          if (filledCount >= 5) {
-            expect(btn.disabled).toBe(false);
-          } else {
-            expect(btn.disabled).toBe(true);
-          }
+          expect(btn.disabled).toBe(true);
         }
       }),
       { numRuns: 100 }

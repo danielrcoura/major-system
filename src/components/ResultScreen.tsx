@@ -1,31 +1,16 @@
-import { getResultEmoji } from '../utils/trainUtils';
 import { TrainMode } from '../types';
 
 interface ResultScreenProps {
   mode: TrainMode;
-  score: number;
-  totalRounds: number;
   totalCards: number;
   onRetry: () => void;
   onBackToSetup?: () => void;
 }
 
-export default function ResultScreen({ mode, score, totalRounds, totalCards, onRetry, onBackToSetup }: ResultScreenProps) {
-  const isFlash = mode === 'flashCards';
+export default function ResultScreen({ mode, totalCards, onRetry, onBackToSetup }: ResultScreenProps) {
   const isRange = mode === 'rangeTrain';
-
-  let title: string;
-  let scoreText: string;
-
-  if (isFlash || isRange) {
-    title = isRange ? '🎯 Treino por Range Concluído' : '🃏 Flash Cards Concluído';
-    scoreText = `Você revisou ${totalCards} cartas.`;
-  } else {
-    const emoji = getResultEmoji(score, totalRounds);
-    const pct = Math.round((score / totalRounds) * 100);
-    title = `${emoji} Treino Concluído`;
-    scoreText = `Acertos perfeitos: ${score} / ${totalRounds} (${pct}%)`;
-  }
+  const title = isRange ? '🎯 Treino por Range Concluído' : '🃏 Flash Cards Concluído';
+  const scoreText = `Você revisou ${totalCards} cartas.`;
 
   return (
     <div className="train-panel">
