@@ -1,24 +1,50 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
+import { useLocation } from 'react-router';
 import { useDeckData } from '../hooks/useDeckData';
 import { TrainMode, TrainDirection } from '../types';
-import { FilledEntry } from '../utils/trainUtils';
+import { FilledEntry, filterByRange } from '../utils/trainUtils';
 import TrainSetup from '../components/TrainSetup';
 import RangeTrainSetup from '../components/RangeTrainSetup';
 import FlashCards from '../components/FlashCards';
 import ResultScreen from '../components/ResultScreen';
 
+interface TrainLocationState {
+  rangeIndex?: number;
+  direction?: TrainDirection;
+}
+
 export default function TrainPage() {
   const { getFilledEntries } = useDeckData();
+  const location = useLocation();
 
   const [mode, setMode] = useState<TrainMode>('flashCards');
   const [phase, setPhase] = useState<'setup' | 'challenge' | 'result'>('setup');
   const [totalCards, setTotalCards] = useState<number>(0);
   const [filledEntries, setFilledEntries] = useState<FilledEntry[]>([]);
   const sessionRef = useRef<number>(0);
+  const initializedFromState = useRef(false);
 
   // rangeTrain-specific state
   const [rangeDirection, setRangeDirection] = useState<TrainDirection>('numToChar');
   const [rangeFilteredEntries, setRangeFilteredEntries] = useState<FilledEntry[]>([]);
+
+  // Auto-start from CardSection shortcut
+  useEffect(() => {
+    const state = location.state as TrainLocationState | null;
+    if (state?.rangeIndex != null && state?.direction && !initializedFromState.current) {
+      initializedFromState.current = true;
+      const entries = getFilledEntries();
+      const filtered = filterByRange(entries, state.rangeIndex);
+      if (filtered.length > 0) {
+        setMode('rangeTrain');
+        setRangeFilteredEntries(filtered);
+        setRangeDirection(state.direction);
+        setTotalCards(0);
+        sessionRef.current += 1;
+        setPhase('challenge');
+      }
+    }
+  }, [location.state, getFilledEntries]);
 
   const handleStart = useCallback(() => {
     const entries: FilledEntry[] = getFilledEntries();

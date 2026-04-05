@@ -136,6 +136,31 @@ main {
   color: #8b0000;
 }
 
+.section-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.section-train-btn {
+  background: none;
+  border: 1px solid #d0ccc5;
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: background 0.15s, border-color 0.15s;
+  line-height: 1;
+}
+.section-train-btn:hover:not(:disabled) {
+  background: #f0ece6;
+  border-color: #8b0000;
+}
+.section-train-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
 .section-progress {
   font-size: 0.85rem;
   color: #2d6a4f;
