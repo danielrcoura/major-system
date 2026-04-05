@@ -7,4 +7,14 @@ export interface DeckEntry {
 
 export type DeckData = Record<string, DeckEntry>;
 
-export type TrainMode = 'numToChar' | 'charToNum' | 'flashCards';
+export type TrainMode = 'numToChar' | 'charToNum' | 'flashCards' | 'rangeTrain';
+
+export type SelectionMode = 'range' | 'digit';
+
+export type TrainDirection = 'numToChar' | 'charToNum';
+
+export interface RangeTrainConfig {
+  selectionMode: SelectionMode;
+  selectedValue: number;
+  direction: TrainDirection;
+}

@@ -6,6 +6,10 @@ import {
   shuffle,
   getResultEmoji,
   calculateProgress,
+  filterByRange,
+  filterByDigit,
+  countFilledInRange,
+  countFilledWithDigit,
   CARDS_PER_ROUND,
   DISTRACTORS,
 } from './trainUtils';
@@ -186,6 +190,106 @@ describe('Property 13: Emoji do resultado segue os limiares corretos', () => {
           }
         }
       ),
+      { numRuns: 100 }
+    );
+  });
+});
+
+
+// Feature: range-based-training, Property 1: Filtragem por range retorna apenas entradas do range
+/**
+ * **Validates: Requirements 5.1**
+ */
+describe('Property 1: Filtragem por range retorna apenas entradas do range', () => {
+  it('filterByRange returns only entries in the range and omits none', () => {
+    const rangeArb = fc.integer({ min: 0, max: 9 });
+
+    fc.assert(
+      fc.property(filledEntriesArb, rangeArb, (entries, rangeStart) => {
+        const result = filterByRange(entries, rangeStart);
+
+        // All returned entries belong to the range
+        for (const entry of result) {
+          expect(Math.floor(parseInt(entry.num) / 10)).toBe(rangeStart);
+        }
+
+        // No valid entries were omitted
+        const expected = entries.filter(
+          (e) => Math.floor(parseInt(e.num) / 10) === rangeStart
+        );
+        expect(result).toHaveLength(expected.length);
+
+        // Same entries (by num) in both sets
+        const resultNums = result.map((e) => e.num).sort();
+        const expectedNums = expected.map((e) => e.num).sort();
+        expect(resultNums).toEqual(expectedNums);
+      }),
+      { numRuns: 100 }
+    );
+  });
+});
+
+
+// Feature: range-based-training, Property 2: Filtragem por dígito retorna apenas entradas contendo o dígito
+/**
+ * **Validates: Requirements 2.4, 5.2**
+ */
+describe('Property 2: Filtragem por dígito retorna apenas entradas contendo o dígito', () => {
+  it('filterByDigit returns only entries containing the digit and omits none', () => {
+    const digitArb = fc.integer({ min: 0, max: 9 });
+
+    fc.assert(
+      fc.property(filledEntriesArb, digitArb, (entries, digit) => {
+        const result = filterByDigit(entries, digit);
+        const d = String(digit);
+
+        // All returned entries contain the digit in their num
+        for (const entry of result) {
+          expect(entry.num.includes(d)).toBe(true);
+        }
+
+        // No valid entries were omitted
+        const expected = entries.filter((e) => e.num.includes(d));
+        expect(result).toHaveLength(expected.length);
+
+        // Same entries (by num) in both sets
+        const resultNums = result.map((e) => e.num).sort();
+        const expectedNums = expected.map((e) => e.num).sort();
+        expect(resultNums).toEqual(expectedNums);
+      }),
+      { numRuns: 100 }
+    );
+  });
+});
+
+
+// Feature: range-based-training, Property 3: Contagem de cartões preenchidos corresponde ao filtro
+/**
+ * **Validates: Requirements 1.5, 2.5**
+ */
+describe('Property 3: Contagem de cartões preenchidos corresponde ao filtro', () => {
+  it('countFilledInRange equals filterByRange length for any entries and range', () => {
+    const rangeArb = fc.integer({ min: 0, max: 9 });
+
+    fc.assert(
+      fc.property(filledEntriesArb, rangeArb, (entries, rangeStart) => {
+        const count = countFilledInRange(entries, rangeStart);
+        const filtered = filterByRange(entries, rangeStart);
+        expect(count).toBe(filtered.length);
+      }),
+      { numRuns: 100 }
+    );
+  });
+
+  it('countFilledWithDigit equals filterByDigit length for any entries and digit', () => {
+    const digitArb = fc.integer({ min: 0, max: 9 });
+
+    fc.assert(
+      fc.property(filledEntriesArb, digitArb, (entries, digit) => {
+        const count = countFilledWithDigit(entries, digit);
+        const filtered = filterByDigit(entries, digit);
+        expect(count).toBe(filtered.length);
+      }),
       { numRuns: 100 }
     );
   });

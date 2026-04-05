@@ -1,12 +1,14 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { FilledEntry, shuffle, calculateProgress } from '../utils/trainUtils';
+import { TrainDirection } from '../types';
 
 interface FlashCardsProps {
   filledEntries: FilledEntry[];
+  direction?: TrainDirection;
   onComplete: (cardCount: number) => void;
 }
 
-export default function FlashCards({ filledEntries, onComplete }: FlashCardsProps) {
+export default function FlashCards({ filledEntries, direction = 'numToChar', onComplete }: FlashCardsProps) {
   const [deck, setDeck] = useState<FilledEntry[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [flipped, setFlipped] = useState<boolean>(false);
@@ -32,8 +34,11 @@ export default function FlashCards({ filledEntries, onComplete }: FlashCardsProp
         onComplete(deck.length);
         return;
       }
-      setCurrentIndex(nextIndex);
+      // Unflip first, then wait for the CSS transition (500ms) before changing the card
       setFlipped(false);
+      timerRef.current = setTimeout(() => {
+        setCurrentIndex(nextIndex);
+      }, 500);
     }, 1500);
   }, [flipped, currentIndex, deck, onComplete]);
 
@@ -56,25 +61,52 @@ export default function FlashCards({ filledEntries, onComplete }: FlashCardsProp
           onClick={handleClick}
         >
           <div className="flash-front">
-            <span className="flash-number">{entry.num}</span>
+            {direction === 'numToChar' ? (
+              <span className="flash-number">{entry.num}</span>
+            ) : (
+              <>
+                <div className="flash-art">
+                  {entry.image ? (
+                    <img
+                      src={entry.image}
+                      alt={entry.persona}
+                      onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                        if (e.currentTarget.parentElement) {
+                          e.currentTarget.parentElement.innerHTML = '<span>🧑</span>';
+                        }
+                      }}
+                    />
+                  ) : (
+                    <span>🧑</span>
+                  )}
+                </div>
+                <div className="flash-name">{entry.persona}</div>
+              </>
+            )}
           </div>
           <div className="flash-back">
-            <div className="flash-art">
-              {entry.image ? (
-                <img
-                  src={entry.image}
-                  alt={entry.persona}
-                  onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
-                    if (e.currentTarget.parentElement) {
-                      e.currentTarget.parentElement.innerHTML = '<span>🧑</span>';
-                    }
-                  }}
-                />
-              ) : (
-                <span>🧑</span>
-              )}
-            </div>
-            <div className="flash-name">{entry.persona}</div>
+            {direction === 'numToChar' ? (
+              <>
+                <div className="flash-art">
+                  {entry.image ? (
+                    <img
+                      src={entry.image}
+                      alt={entry.persona}
+                      onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                        if (e.currentTarget.parentElement) {
+                          e.currentTarget.parentElement.innerHTML = '<span>🧑</span>';
+                        }
+                      }}
+                    />
+                  ) : (
+                    <span>🧑</span>
+                  )}
+                </div>
+                <div className="flash-name">{entry.persona}</div>
+              </>
+            ) : (
+              <span className="flash-number">{entry.num}</span>
+            )}
           </div>
         </div>
       </div>

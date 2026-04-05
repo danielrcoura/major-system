@@ -1,8 +1,9 @@
 import { useState, useCallback, useRef } from 'react';
 import { useDeckData } from '../hooks/useDeckData';
-import { TrainMode } from '../types';
+import { TrainMode, TrainDirection } from '../types';
 import { FilledEntry, TOTAL_ROUNDS } from '../utils/trainUtils';
 import TrainSetup from '../components/TrainSetup';
+import RangeTrainSetup from '../components/RangeTrainSetup';
 import NumToCharChallenge from '../components/NumToCharChallenge';
 import CharToNumChallenge from '../components/CharToNumChallenge';
 import FlashCards from '../components/FlashCards';
@@ -18,6 +19,10 @@ export default function TrainPage() {
   const [filledEntries, setFilledEntries] = useState<FilledEntry[]>([]);
   const sessionRef = useRef<number>(0);
 
+  // rangeTrain-specific state
+  const [rangeDirection, setRangeDirection] = useState<TrainDirection>('numToChar');
+  const [rangeFilteredEntries, setRangeFilteredEntries] = useState<FilledEntry[]>([]);
+
   const handleStart = useCallback(() => {
     const entries: FilledEntry[] = getFilledEntries();
     setFilledEntries(entries);
@@ -26,6 +31,14 @@ export default function TrainPage() {
     sessionRef.current += 1;
     setPhase('challenge');
   }, [getFilledEntries]);
+
+  const handleRangeStart = useCallback((filteredEntries: FilledEntry[], direction: TrainDirection) => {
+    setRangeFilteredEntries(filteredEntries);
+    setRangeDirection(direction);
+    setTotalCards(0);
+    sessionRef.current += 1;
+    setPhase('challenge');
+  }, []);
 
   const handleChallengeComplete = useCallback((finalScore: number) => {
     setScore(finalScore);
@@ -38,25 +51,44 @@ export default function TrainPage() {
   }, []);
 
   const handleRetry = useCallback(() => {
+    if (mode === 'rangeTrain') {
+      // Restart with same filtered entries and direction
+      setTotalCards(0);
+      sessionRef.current += 1;
+      setPhase('challenge');
+      return;
+    }
     const entries: FilledEntry[] = getFilledEntries();
     setFilledEntries(entries);
     setScore(0);
     setTotalCards(0);
     sessionRef.current += 1;
     setPhase('challenge');
-  }, [getFilledEntries]);
+  }, [mode, getFilledEntries]);
+
+  const handleBackToSetup = useCallback(() => {
+    setPhase('setup');
+  }, []);
 
   const currentFilledCount = getFilledEntries().length;
   const sessionKey = sessionRef.current;
 
   return (
     <main>
-      {phase === 'setup' && (
+      {phase === 'setup' && mode !== 'rangeTrain' && (
         <TrainSetup
           filledCount={currentFilledCount}
           mode={mode}
           onModeChange={setMode}
           onStart={handleStart}
+        />
+      )}
+
+      {phase === 'setup' && mode === 'rangeTrain' && (
+        <RangeTrainSetup
+          filledEntries={getFilledEntries()}
+          onStart={handleRangeStart}
+          onBack={() => setMode('numToChar')}
         />
       )}
 
@@ -84,6 +116,15 @@ export default function TrainPage() {
         />
       )}
 
+      {phase === 'challenge' && mode === 'rangeTrain' && (
+        <FlashCards
+          key={sessionKey}
+          filledEntries={rangeFilteredEntries}
+          direction={rangeDirection}
+          onComplete={handleFlashComplete}
+        />
+      )}
+
       {phase === 'result' && (
         <ResultScreen
           mode={mode}
@@ -91,6 +132,7 @@ export default function TrainPage() {
           totalRounds={TOTAL_ROUNDS}
           totalCards={totalCards}
           onRetry={handleRetry}
+          onBackToSetup={mode === 'rangeTrain' ? handleBackToSetup : undefined}
         />
       )}
     </main>

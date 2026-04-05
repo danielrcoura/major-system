@@ -6,6 +6,8 @@ const MODE_DESCRIPTIONS: Record<TrainMode, string> = {
   charToNum: 'Veja 3 personagens e clique nos números na ordem correta.',
   flashCards:
     'Veja o número, clique para revelar o personagem. Revise todos os cartões preenchidos.',
+  rangeTrain:
+    'Filtre por range ou dígito e pratique com flashcards na direção escolhida.',
 };
 
 interface ModeOption {
@@ -17,6 +19,7 @@ const MODES: ModeOption[] = [
   { key: 'numToChar', label: 'Número → Personagem' },
   { key: 'charToNum', label: 'Personagem → Número' },
   { key: 'flashCards', label: 'Flash Cards' },
+  { key: 'rangeTrain', label: 'Treino por Range' },
 ];
 
 interface TrainSetupProps {

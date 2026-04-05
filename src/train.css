@@ -385,3 +385,18 @@
   .flash-card { width: 150px; }
   .flash-number { font-size: 2.8rem; }
 }
+
+/* ===== Range Train Setup ===== */
+.range-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.item-count {
+  font-size: 0.75rem;
+  color: #999;
+  margin-left: 0.3rem;
+}

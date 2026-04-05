@@ -100,6 +100,35 @@ export function calculateProgress(currentIndex: number, total: number): Progress
  * Check if the start button should be enabled.
  */
 export function isStartEnabled(mode: TrainMode, filledCount: number): boolean {
-  if (mode === 'flashCards') return filledCount >= 1;
+  if (mode === 'flashCards' || mode === 'rangeTrain') return filledCount >= 1;
   return filledCount >= CARDS_PER_ROUND + DISTRACTORS; // >= 5
+}
+
+/**
+ * Filter entries whose number belongs to the given range (e.g., rangeStart=1 → 10-19).
+ */
+export function filterByRange(entries: FilledEntry[], rangeStart: number): FilledEntry[] {
+  return entries.filter((e) => Math.floor(parseInt(e.num) / 10) === rangeStart);
+}
+
+/**
+ * Filter entries whose number contains the given digit in any position.
+ */
+export function filterByDigit(entries: FilledEntry[], digit: number): FilledEntry[] {
+  const d = String(digit);
+  return entries.filter((e) => e.num.includes(d));
+}
+
+/**
+ * Count filled entries whose number belongs to the given range.
+ */
+export function countFilledInRange(entries: FilledEntry[], rangeStart: number): number {
+  return filterByRange(entries, rangeStart).length;
+}
+
+/**
+ * Count filled entries whose number contains the given digit.
+ */
+export function countFilledWithDigit(entries: FilledEntry[], digit: number): number {
+  return filterByDigit(entries, digit).length;
 }
