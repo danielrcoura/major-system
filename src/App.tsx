@@ -7,7 +7,7 @@ import TrainPage from './pages/TrainPage';
 export default function App() {
   return (
     <DeckDataProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/major-system">
         <Header />
         <Routes>
           <Route path="/" element={<DeckPage />} />

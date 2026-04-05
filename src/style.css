@@ -84,24 +84,7 @@ h1 { font-size: 2rem; color: #8b0000; }
 }
 .controls button:hover { background: #f0ece6; }
 
-.nav-links {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 1rem;
-}
-.nav-links a {
-  text-decoration: none;
-  color: #8b0000;
-  padding: 0.4rem 1rem;
-  border: 1px solid #d0ccc5;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  transition: background 0.15s;
-}
-.nav-links a:hover, .nav-links a.active {
-  background: #f0ece6;
-}
+
 
 /* Layout */
 main {
