@@ -2,7 +2,6 @@ import { useState, useCallback } from 'react';
 import { useDeckData } from '../hooks/useDeckData';
 import { DeckEntry } from '../types';
 import ProgressBar from '../components/ProgressBar';
-import ImportExportControls from '../components/ImportExportControls';
 import CardGrid from '../components/CardGrid';
 import EditModal from '../components/EditModal';
 
@@ -28,9 +27,6 @@ export default function DeckPage() {
   return (
     <main>
       <ProgressBar />
-      <div className="controls">
-        <ImportExportControls />
-      </div>
       <CardGrid data={data} onCardClick={handleCardClick} />
       <EditModal
         isOpen={modalOpen}
