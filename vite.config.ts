@@ -4,7 +4,7 @@ import basicSsl from '@vitejs/plugin-basic-ssl';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
-  base: '/memory-deck/',
+  base: '/major-system/',
   build: {
     outDir: 'docs',
   },
@@ -17,8 +17,8 @@ export default defineConfig({
         name: 'Memory Deck',
         short_name: 'MemoryDeck',
         description: 'Crie sua lista de imagens de 00 a 99 com personagens de ficção',
-        start_url: '/memory-deck/',
-        scope: '/memory-deck/',
+        start_url: '/major-system/',
+        scope: '/major-system/',
         display: 'standalone',
         background_color: '#1a1a2e',
         theme_color: '#6c63ff',
