@@ -34,12 +34,12 @@ const deckDataArb: fc.Arbitrary<DeckData> = fc
  * Validates: Requirements 2.1
  */
 describe('Property 5: Grid renderiza 10 seções com 10 cartões cada', () => {
-  it('for any DeckData (including empty), CardGrid without filter produces exactly 10 sections with 10 cards each, covering 00-99', () => {
+  it('for any DeckData (including empty), CardGrid produces exactly 10 sections with 10 cards each, covering 00-99', () => {
     fc.assert(
       fc.property(deckDataArb, (data: DeckData) => {
         const onClick = (_num: string): void => {};
         const { container } = render(
-          <CardGrid data={data} filter="" onCardClick={onClick} />
+          <CardGrid data={data} onCardClick={onClick} />
         );
 
         // Should have exactly 10 sections
