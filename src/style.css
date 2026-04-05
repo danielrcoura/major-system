@@ -111,25 +111,44 @@ header {
 h1 { font-size: 2rem; color: #8b0000; }
 .subtitle { color: #888; margin: 0.5rem 0 1rem; }
 
-.global-progress {
+.progress-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  padding: 0.7rem 1rem;
+  background: #fef9e7;
+  border: 1px solid #f0d97a;
+  border-left: 4px solid #d4a017;
+  border-radius: 6px;
+  font-size: 0.93rem;
+  color: #5a4e00;
+}
+.progress-callout-icon {
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+.progress-callout-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.progress-callout-bar {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  margin-bottom: 0.8rem;
-  font-size: 0.95rem;
-  color: #555;
+  gap: 0.6rem;
 }
-.global-progress .progress-bar {
+.progress-callout .progress-bar {
   width: 200px;
   height: 8px;
   background: #e0dcd5;
   border-radius: 4px;
   overflow: hidden;
 }
-.global-progress .progress-fill {
+.progress-callout .progress-fill {
   height: 100%;
-  background: #8b0000;
+  background: #d4a017;
   border-radius: 4px;
   transition: width 0.3s;
 }
