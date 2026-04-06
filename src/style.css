@@ -492,3 +492,43 @@ main {
   .legend-grid { grid-template-columns: repeat(2, 1fr); }
   .section-cards { grid-template-columns: repeat(3, 1fr); padding: 0.8rem; gap: 0.8rem; }
 }
+
+/* ===== Review Callout ===== */
+.review-callout {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  padding: 0.7rem 1rem;
+  background: #eef6ff;
+  border: 1px solid #a3c4f3;
+  border-left: 4px solid #4a90d9;
+  border-radius: 6px;
+  font-size: 0.93rem;
+  color: #1a3a5c;
+}
+.review-callout-icon {
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+.review-callout-content {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  flex: 1;
+}
+.btn-review-now {
+  padding: 0.4rem 1rem;
+  background: #4a90d9;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-family: 'Georgia', serif;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-review-now:hover {
+  background: #3670b3;
+}

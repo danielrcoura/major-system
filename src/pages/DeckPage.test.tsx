@@ -19,13 +19,12 @@ function renderWithContext(data = {}) {
 }
 
 describe('DeckPage integration', () => {
-  it('renders ProgressBar, CardGrid and controls', () => {
+  it('renders ProgressBar and CardGrid', () => {
     renderWithContext();
     // ProgressBar shows "0 / 100 cartas"
     expect(screen.getByText(/0 \/ 100 cartas/)).toBeInTheDocument();
-    // ImportExportControls buttons
-    expect(screen.getByText(/Exportar/)).toBeInTheDocument();
-    expect(screen.getByText(/Importar/)).toBeInTheDocument();
+    // CardGrid renders card numbers
+    expect(screen.getByText('00')).toBeInTheDocument();
   });
 
   it('opens EditModal when a card is clicked', () => {
