@@ -1,9 +1,10 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import type { Rating } from 'ts-fsrs';
 import { processRating, type PendingCard } from '../domain/reviewService';
 import { createFSRSRepository } from '../domain/fsrsRepository';
 
 const repo = createFSRSRepository();
+const FLIP_ANIMATION_MS = 500;
 
 export interface UseReviewSessionReturn {
   currentCard: PendingCard | null;
@@ -18,6 +19,7 @@ export interface UseReviewSessionReturn {
 export function useReviewSession(pendingCards: PendingCard[]): UseReviewSessionReturn {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const total = pendingCards.length;
   const isComplete = currentIndex >= total;
@@ -32,7 +34,9 @@ export function useReviewSession(pendingCards: PendingCard[]): UseReviewSessionR
     const card = pendingCards[currentIndex];
     processRating(card.key, card.fsrsCard, rating, repo);
     setIsFlipped(false);
-    setCurrentIndex((i) => i + 1);
+    timerRef.current = setTimeout(() => {
+      setCurrentIndex((i) => i + 1);
+    }, FLIP_ANIMATION_MS);
   }, [currentIndex, total, pendingCards]);
 
   return {
