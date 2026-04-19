@@ -12,7 +12,6 @@ export default function Navbar(): React.JSX.Element {
 
   const isDeck = pathname === '/';
   const isTable = pathname === '/tabela';
-  const title = isTable ? '📊 Tabela' : isDeck ? '🃏 Memory Deck' : '🧠 Treino';
 
   function handleExport(): void {
     const blob = new Blob([deckCore.exportCards()], { type: 'application/json' });
@@ -43,7 +42,7 @@ export default function Navbar(): React.JSX.Element {
 
   return (
     <nav className="navbar">
-      <span className="navbar-title">{title}</span>
+      <span className="navbar-title" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>🃏 Memory Deck</span>
       <div className="navbar-actions-desktop">
         <button onClick={() => navigate('/tabela')}>📊 Tabela</button>
         <button onClick={handleExport}>📥 Exportar</button>
