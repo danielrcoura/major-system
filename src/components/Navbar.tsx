@@ -45,6 +45,7 @@ export default function Navbar(): React.JSX.Element {
       <span className="navbar-title" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>🃏 Memory Deck</span>
       <div className="navbar-actions-desktop">
         <button onClick={() => navigate('/tabela')}>📊 Tabela</button>
+        <button onClick={() => navigate('/estatisticas')}>📈 Estatísticas</button>
         <button onClick={handleExport}>📥 Exportar</button>
         <button onClick={() => fileInputRef.current?.click()}>📤 Importar</button>
       </div>
@@ -59,6 +60,7 @@ export default function Navbar(): React.JSX.Element {
       {menuOpen && (
         <div className="navbar-dropdown">
           <button onClick={() => { navigate('/tabela'); setMenuOpen(false); }}>📊 Tabela</button>
+          <button onClick={() => { navigate('/estatisticas'); setMenuOpen(false); }}>📈 Estatísticas</button>
           <button onClick={handleExport}>📥 Exportar</button>
           <button onClick={() => { fileInputRef.current?.click(); setMenuOpen(false); }}>📤 Importar</button>
         </div>

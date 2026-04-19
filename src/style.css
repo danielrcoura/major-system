@@ -623,3 +623,74 @@ tbody .table-header { left: 0; z-index: 1; }
   background: linear-gradient(transparent, rgba(0,0,0,0.5));
   z-index: 1;
 }
+
+/* ===== Stats Page ===== */
+.stats-bars {
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.stats-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.stats-bar-label {
+  width: 90px;
+  font-family: 'Georgia', serif;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-align: right;
+  flex-shrink: 0;
+}
+.stats-bar-track {
+  flex: 1;
+  height: 20px;
+  background: #f0ece6;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.stats-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.3s;
+  min-width: 2px;
+}
+.stats-bar-count {
+  width: 36px;
+  font-size: 0.85rem;
+  color: #666;
+  text-align: right;
+  flex-shrink: 0;
+}
+.stats-empty {
+  color: #999;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 1rem;
+}
+.stats-table-wrap {
+  overflow-x: auto;
+}
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.stats-table th {
+  text-align: left;
+  padding: 0.5rem 1rem;
+  background: #faf8f5;
+  border-bottom: 1px solid #e8e5e0;
+  font-family: 'Georgia', serif;
+  font-size: 0.8rem;
+  color: #8b0000;
+}
+.stats-table td {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #f0ece6;
+}
+.stats-table tbody tr:hover {
+  background: #faf8f5;
+}
