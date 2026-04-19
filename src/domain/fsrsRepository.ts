@@ -6,6 +6,7 @@ export interface FSRSRepository {
   getAllCards(): Record<string, Card>;
   saveReview(key: string, card: Card, log: ReviewLog): void;
   loadAll(): { cards: Record<string, Card>; logs: Record<string, ReviewLog[]> };
+  importAll(data: { cards: Record<string, Card>; logs: Record<string, ReviewLog[]> }): void;
 }
 
 const STORAGE_KEY = 'fsrs-data';
@@ -51,6 +52,10 @@ export function createFSRSRepository(): FSRSRepository {
 
     loadAll(): { cards: Record<string, Card>; logs: Record<string, ReviewLog[]> } {
       return loadStore();
+    },
+
+    importAll(data: { cards: Record<string, Card>; logs: Record<string, ReviewLog[]> }): void {
+      saveStore(data);
     },
   };
 }
