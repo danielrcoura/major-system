@@ -1,7 +1,9 @@
 import { useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { useDeckData } from '../hooks/useDeckData';
-import { deckCore } from '../domain';
+import { exportAll, importAll } from '../domain/importExportService';
+import { LocalStorageRepository } from '../domain/localStorageRepository';
+import { createFSRSRepository } from '../domain/fsrsRepository';
 
 export default function Navbar(): React.JSX.Element {
   const { pathname } = useLocation();
@@ -14,7 +16,9 @@ export default function Navbar(): React.JSX.Element {
   const isTable = pathname === '/tabela';
 
   function handleExport(): void {
-    const blob = new Blob([deckCore.exportCards()], { type: 'application/json' });
+    const deckRepo = new LocalStorageRepository();
+    const fsrsRepo = createFSRSRepository();
+    const blob = new Blob([exportAll(deckRepo, fsrsRepo)], { type: 'application/json' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
     a.download = 'pao-major-system.json';
@@ -27,12 +31,14 @@ export default function Navbar(): React.JSX.Element {
     if (!file) return;
     const reader = new FileReader();
     reader.onload = (ev) => {
-      try {
-        const jsonString = ev.target?.result as string;
-        deckCore.importCards(jsonString);
-        importData(deckCore.getAll());
-      } catch (err) {
-        alert(err instanceof Error ? err.message : 'Arquivo JSON inválido.');
+      const jsonString = ev.target?.result as string;
+      const deckRepo = new LocalStorageRepository();
+      const fsrsRepo = createFSRSRepository();
+      const result = importAll(jsonString, deckRepo, fsrsRepo);
+      if (!result.success) {
+        alert(result.error);
+      } else {
+        importData(deckRepo.getAll());
       }
     };
     reader.readAsText(file);
