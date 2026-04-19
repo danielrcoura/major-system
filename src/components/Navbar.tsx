@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { useDeckData } from '../hooks/useDeckData';
 import { deckCore } from '../domain';
 
@@ -8,9 +8,11 @@ export default function Navbar(): React.JSX.Element {
   const { importData } = useDeckData();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const isDeck = pathname === '/';
-  const title = isDeck ? '🃏 Memory Deck' : '🧠 Treino';
+  const isTable = pathname === '/tabela';
+  const title = isTable ? '📊 Tabela' : isDeck ? '🃏 Memory Deck' : '🧠 Treino';
 
   function handleExport(): void {
     const blob = new Blob([deckCore.exportCards()], { type: 'application/json' });
@@ -43,6 +45,7 @@ export default function Navbar(): React.JSX.Element {
     <nav className="navbar">
       <span className="navbar-title">{title}</span>
       <div className="navbar-actions-desktop">
+        <button onClick={() => navigate('/tabela')}>📊 Tabela</button>
         <button onClick={handleExport}>📥 Exportar</button>
         <button onClick={() => fileInputRef.current?.click()}>📤 Importar</button>
       </div>
@@ -56,6 +59,7 @@ export default function Navbar(): React.JSX.Element {
       </button>
       {menuOpen && (
         <div className="navbar-dropdown">
+          <button onClick={() => { navigate('/tabela'); setMenuOpen(false); }}>📊 Tabela</button>
           <button onClick={handleExport}>📥 Exportar</button>
           <button onClick={() => { fileInputRef.current?.click(); setMenuOpen(false); }}>📤 Importar</button>
         </div>

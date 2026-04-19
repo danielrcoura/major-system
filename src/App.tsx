@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import DeckPage from './pages/DeckPage';
 import TrainPage from './pages/TrainPage';
 import ReviewPage from './pages/ReviewPage';
+import TablePage from './pages/TablePage';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
           <Route path="/" element={<DeckPage />} />
           <Route path="/treino" element={<TrainPage />} />
           <Route path="/revisao" element={<ReviewPage />} />
+          <Route path="/tabela" element={<TablePage />} />
         </Routes>
       </BrowserRouter>
     </DeckDataProvider>
